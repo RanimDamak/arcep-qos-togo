@@ -63,6 +63,7 @@ Chaque fichier SurePay ne contient qu'**un seul événement** à sa racine (conf
 
 ## 4. Architecture (5 couches du diagramme de classes + structure réelle)
 
+```
 arcep-qos-togo/
 ├── archive/ # schema_native_postgres.sql (ancien schéma à partitionnement natif, non utilisé)
 ├── data/
@@ -85,7 +86,7 @@ arcep-qos-togo/
 │ └── output/ # Couche 5 - Heatmap, Rapport (Excel) ; Historique / export PDF non faits
 └── tests/ # test_collecteur_cdr.py (12 tests, dont 5 couvrant le décodage QoS TS 24.008 -
 # forfait_id retiré des assertions, champ jamais présent dans LigneCDR)
-
+```
 
 **Note sur `src/agregation/`** : ce dossier ne fait pas partie des 5 couches nommées dans le diagramme de classes d'origine - `ModuleLissage` y est rangé alors que le diagramme le place dans la Couche 4 (`detection/`). Choix assumé, inchangé depuis la version précédente de ce README : regrouper toute la logique d'agrégation/calcul de profils dans un seul dossier plutôt que de suivre strictement le découpage du diagramme.
 
@@ -142,7 +143,7 @@ arcep-qos-togo/
 
 - **Catalogue Moov nettoyé (`transaction_code` seul insuffisant comme clé)** : sur 185 lignes reçues, seuls 96 `transaction_code` sont uniques - 21 doublons purs environnement (dsitest/hxc, même produit) et 6 codes réellement multi-produits (ex. `SUBSINTERNET` couvre 23 forfaits distincts). Catalogue dédupliqué à 163 lignes : `transaction_code` utilisé comme id quand unique, sinon id composite `transaction_code-<id_ligne_csv>` (ex. `SUBSINTERNET-109`) pour rester sous `forfait.id VARCHAR(30)`. Script prêt (`seed_moov_forfait.sql`), **pas encore exécuté** - voir §7 point 2.
 
-## 7. Décisions encore ouvertes
+## 7. Décisions encore ouvertes (ne pas deviner)
 
 | # | Sujet | Détail | Bloque |
 |---|---|---|---|
