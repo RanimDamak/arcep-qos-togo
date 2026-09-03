@@ -1,0 +1,26 @@
+# ============================================================
+# arcep-qos-togo - dépendances Python
+# ============================================================
+
+# --- Couche analyse (cf. doc ARCEP section VIII - Python recommandé) ---
+pandas>=2.0
+numpy>=1.24
+scipy>=1.10
+duckdb>=1.0
+matplotlib>=3.8
+seaborn>=0.13
+
+# --- Couche persistance ---
+# Pilote PostgreSQL : psycopg 3. [binary] embarque libpq (pas d'install système).
+# Utilisé par src/donnees/db.py et le COPY de src/collecte/collecteur_cdr.py.
+psycopg[binary]>=3.2
+
+# --- Couche output (Excel / PDF) ---
+openpyxl>=3.1
+reportlab>=4.0
+
+# --- Config ---
+python-dotenv>=1.0
+
+# --- Tests ---
+pytest>=8.0

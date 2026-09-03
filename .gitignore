@@ -1,0 +1,13 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+config/db_config.py
+data/exports/*
+!data/exports/.gitkeep
+.env
+*.duckdb
+*.dump
+.pytest_cache/
+*.xlsx
+~$*
